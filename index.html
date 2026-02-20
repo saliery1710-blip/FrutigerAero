@@ -3,123 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aero Glass Blue - Pure Edition</title>
+    <title>Frutiger Aero - Crystal Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@200;300&display=swap" rel="stylesheet">
     <style>
-        /* --- ESTILO BASE: TIPOGRAFÍA ULTRA FINA --- */
+        :root {
+            --font-futuristic: 'Orbitron', sans-serif;
+            --font-thin: 'Exo 2', sans-serif;
+        }
+
+        /* --- FONDO FRUTIGER AERO REAL --- */
         body {
-            /* Fondo de alta calidad estilo Windows Vista/7 */
-            background: #004e92 url('https://wallpaperaccess.com/full/1204443.jpg') no-repeat center center fixed;
-            background-size: cover;
-            /* Forzamos la tipografía más fina posible */
-            font-family: "Segoe UI Light", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-            font-weight: 200; 
             margin: 0;
-            padding: 10px;
-            color: #ffffff;
+            padding: 20px;
+            min-height: 100vh;
+            /* Degradado celeste vibrante con "luces" */
+            background: #4fc3f7;
+            background: radial-gradient(circle at 50% 0%, #b3e5fc 0%, #4fc3f7 50%, #0288d1 100%);
+            background-attachment: fixed;
+            font-family: var(--font-thin);
+            color: #01579b;
             overflow-x: hidden;
         }
 
-        /* --- BURBUJAS --- */
-        .bubble {
+        /* Capa de brillo dinámico sobre el fondo */
+        body::after {
+            content: "";
             position: fixed;
-            bottom: -100px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(255,255,255,0.1) 100%);
             pointer-events: none;
             z-index: -1;
-            animation: flotar 15s infinite ease-in;
-            box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.3);
         }
 
-        @keyframes flotar {
-            0% { transform: translateY(0) scale(1); opacity: 0; }
-            20% { opacity: 0.6; }
-            100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+        /* --- BURBUJAS DE CRISTAL --- */
+        .bubble {
+            position: fixed;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            z-index: -1;
+            /* Efecto de esfera de cristal */
+            box-shadow: 
+                inset -10px -10px 20px rgba(255,255,255,0.3),
+                inset 5px 5px 15px rgba(0,0,0,0.05),
+                0 10px 20px rgba(0,0,0,0.1);
+            animation: moveUp 15s infinite ease-in;
         }
 
-        /* --- NAVEGACIÓN GLOSSY --- */
-        .nav-aero {
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
-            backdrop-filter: blur(12px);
-            padding: 12px;
-            border-radius: 12px;
+        @keyframes moveUp {
+            0% { transform: translateY(110vh) scale(0.8); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
+        }
+
+        /* --- NAVEGACIÓN --- */
+        .nav-container {
             display: flex;
             justify-content: center;
             gap: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+            font-family: var(--font-futuristic);
         }
 
-        .nav-aero a {
-            color: white;
+        .nav-item {
             text-decoration: none;
-            font-size: 13px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0.8;
+            color: #0277bd;
+            font-size: 11px;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.4);
             transition: 0.3s;
         }
 
-        .nav-aero a:hover { opacity: 1; text-shadow: 0 0 8px white; }
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 15px white;
+        }
 
-        /* --- CONTENEDORES DE CRISTAL --- */
+        /* --- PANELES GLASS --- */
         .main-grid {
             display: grid;
-            grid-template-columns: 280px 1fr 280px;
-            gap: 20px;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.12);
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(20px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 25px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 40px; /* Muy redondeado */
+            padding: 30px;
             text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
         }
 
-        /* --- BOTONES CELESTES BRILLANTES (ESTILO CARAMELO) --- */
-        .btn-celeste {
+        h2 {
+            font-family: var(--font-futuristic);
+            font-weight: 700;
+            font-size: 22px;
+            margin-top: 0;
+            color: #01579b;
+        }
+
+        /* --- BOTONES BURBUJA --- */
+        .btn-bubble {
+            font-family: var(--font-futuristic);
             background: linear-gradient(to bottom, #81d4fa 0%, #0288d1 100%);
-            border: 1px solid rgba(255, 255, 255, 0.7);
+            border: 2px solid white;
             color: white;
-            padding: 8px 25px;
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: 300;
+            padding: 12px 30px;
+            border-radius: 50px; /* Redondo absoluto */
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(2, 136, 209, 0.4), inset 0 1px 2px white;
+            font-size: 10px;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 15px rgba(2, 136, 209, 0.3), inset 0 2px 5px rgba(255,255,255,0.6);
             transition: 0.3s;
         }
 
-        .btn-celeste:hover {
+        .btn-bubble:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 20px #81d4fa;
+            box-shadow: 0 0 20px rgba(129, 212, 250, 0.8);
         }
 
-        /* --- REPRODUCTOR --- */
-        .media-circle {
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.2) 100%);
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        h2 { font-weight: 200; letter-spacing: 2px; color: #e1f5fe; }
-        p { font-size: 14px; line-height: 1.6; opacity: 0.9; }
-
-        @media (max-width: 900px) { .main-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { .main-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -127,80 +138,64 @@
     <div id="bubble-container"></div>
     <div id="youtube-player" style="position: absolute; top: -9999px;"></div>
 
-    <div style="max-width: 1200px; margin: 0 auto;">
-        
-        <nav class="nav-aero">
-            <a href="#">Home</a>
-            <a href="#">Archivos</a>
-            <a href="#">Multimedia</a>
-            <a href="#">Sistema</a>
-        </nav>
+    <nav class="nav-container">
+        <a href="#" class="nav-item">SYSTEM</a>
+        <a href="#" class="nav-item">MEDIA</a>
+        <a href="#" class="nav-item">GALLERY</a>
+    </nav>
 
-        <div class="main-grid">
-            
-            <div class="glass-panel">
-                <img src="https://i.pinimg.com/236x/01/9b/3b/019b3b890a8a8f15886617a264a02931.jpg" style="width: 100px; border-radius: 50%; border: 2px solid white; margin-bottom: 10px;">
-                <h3 style="font-weight: 200;">Aero User</h3>
-                <div style="background: rgba(0,0,0,0.2); padding: 10px; border-radius: 10px; font-size: 12px; margin: 15px 0;">
-                    "Explorando el horizonte"
-                </div>
-                <button class="btn-celeste">Enviar Mensaje</button>
+    <div class="main-grid">
+        <div class="glass-card">
+            <h2>AERO_PHAHID</h2>
+            <div style="background: white; border-radius: 25px; padding: 5px; margin-bottom: 20px;">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpYm5ueXF4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKMGpxxcaeqp2m4/giphy.gif" style="width:100%; border-radius: 20px;">
             </div>
+            <p>Pureza y transparencia en cada píxel. Sistema optimizado.</p>
+            <button class="btn-bubble">EXPLORE</button>
+        </div>
 
-            <div class="glass-panel">
-                <div style="overflow:hidden; border-radius: 10px; margin-bottom: 20px;">
-                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpYm5ueXF4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKMGpxxcaeqp2m4/giphy.gif" style="width:100%; height:200px; object-fit:cover; opacity: 0.8;">
-                </div>
-                <h2>Horizonte Orgánico</h2>
-                <p>Tecnología inspirada en la naturaleza. Un entorno digital diseñado para respirar.</p>
-                <button class="btn-celeste">Explorar Archivo</button>
-            </div>
-
-            <div class="glass-panel">
-                <div class="media-circle">🌊</div>
-                <p style="font-size: 12px;">Hydrate! • Playlist</p>
-                <button class="btn-celeste" style="border-radius: 50%; width: 50px; height: 50px; padding: 0;" onclick="toggleAudio()" id="play-icon">▶</button>
-                
-                <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
-                    <div style="font-size: 10px; opacity: 0.6;">VISITANTES</div>
-                    <div style="font-family: monospace; font-size: 20px;">0005482</div>
-                </div>
-            </div>
-
+        <div class="glass-card">
+            <h2>CRYSTAL_CORE</h2>
+            <div style="font-size: 50px; margin: 20px 0;">🌊</div>
+            <p>Estado del sistema: <span style="font-weight: bold;">FLUIDO</span></p>
+            <button class="btn-bubble" onclick="toggleAudio()" id="play-btn">PLAY_AUDIO</button>
         </div>
     </div>
 
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        // Burbujas
+        // Generador de burbujas realistas
         const container = document.getElementById('bubble-container');
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 15; i++) {
             const b = document.createElement('div');
             b.className = 'bubble';
             const size = Math.random() * 60 + 20 + 'px';
-            b.style.width = size; b.style.height = size;
+            b.style.width = size;
+            b.style.height = size;
             b.style.left = Math.random() * 100 + '%';
-            b.style.animationDelay = Math.random() * 10 + 's';
+            b.style.animationDelay = Math.random() * 15 + 's';
+            b.style.animationDuration = (Math.random() * 10 + 10) + 's';
             container.appendChild(b);
         }
 
-        // YouTube Audio
+        // Control de YouTube (Opción 2 integrada)
         let player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('youtube-player', {
-                height: '0', width: '0', videoId: 'mqpgTLH9UP0',
+                height: '0', width: '0',
+                videoId: 'mqpgTLH9UP0', // Cambia este ID por tu música favorita
                 playerVars: { 'autoplay': 0, 'loop': 1, 'playlist': 'mqpgTLH9UP0' }
             });
         }
 
         function toggleAudio() {
-            const icon = document.getElementById('play-icon');
+            const btn = document.getElementById('play-btn');
             if (player.getPlayerState() === 1) {
                 player.pauseVideo();
-                icon.innerHTML = "▶";
+                btn.innerText = "PLAY_AUDIO";
             } else {
                 player.playVideo();
-                icon.innerHTML = "||";
+                btn.innerText = "PAUSE_AUDIO";
             }
         }
     </script>
