@@ -9,14 +9,14 @@
         :root {
             --font-futuristic: 'Orbitron', sans-serif;
             --font-thin: 'Exo 2', sans-serif;
+            --glass: rgba(255, 255, 255, 0.25);
         }
 
-        /* --- FONDO FRUTIGER AERO --- */
+        /* --- FONDO CELESTE AERO --- */
         body {
             margin: 0;
             padding: 20px;
             min-height: 100vh;
-            /* Fondo celeste vibrante inspirado en tu imagen */
             background: #4fc3f7 radial-gradient(circle at 50% 0%, #b3e5fc 0%, #4fc3f7 50%, #0288d1 100%);
             background-attachment: fixed;
             font-family: var(--font-thin);
@@ -24,34 +24,31 @@
             overflow-x: hidden;
         }
 
-        /* --- MARIPOSA DE CRISTAL --- */
-        .butterfly {
+        /* --- MARIPOSA DE CRISTAL (SVG) --- */
+        .butterfly-container {
             position: fixed;
-            top: 15%;
+            top: 10%;
             right: 10%;
-            width: 150px;
-            z-index: 5;
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.8));
+            width: 100px;
+            height: 100px;
+            z-index: 10;
             animation: floatButterfly 6s infinite ease-in-out;
-            pointer-events: none;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.8));
         }
 
         @keyframes floatButterfly {
-            0%, 100% { transform: translateY(0) rotate(5deg); }
-            50% { transform: translateY(-20px) rotate(-5deg); }
+            0%, 100% { transform: translateY(0) rotate(5deg) scale(1); }
+            50% { transform: translateY(-30px) rotate(-5deg) scale(1.1); }
         }
 
-        /* --- BURBUJAS DE CRISTAL --- */
+        /* --- BURBUJAS --- */
         .bubble {
             position: fixed;
             background: rgba(255, 255, 255, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 50%;
             z-index: -1;
-            box-shadow: 
-                inset -10px -10px 20px rgba(255,255,255,0.3),
-                inset 5px 5px 15px rgba(0,0,0,0.05),
-                0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: inset -10px -10px 20px rgba(255,255,255,0.3), 0 10px 20px rgba(0,0,0,0.1);
             animation: moveUp 15s infinite ease-in;
         }
 
@@ -61,41 +58,11 @@
             100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
         }
 
-        /* --- MASCOTA VIRTUAL --- */
-        #pet-container {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 100px;
-            height: 100px;
-            z-index: 100;
-            cursor: pointer;
-            animation: bounce 3s infinite ease-in-out;
-        }
-
-        .pet-body {
-            width: 70px;
-            height: 70px;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(8px);
-            border-radius: 50%;
-            border: 2px solid white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1), inset 0 0 15px white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .eye { width: 12px; height: 12px; background: white; border-radius: 50%; margin: 0 4px; position: relative; }
-        .pupil { width: 6px; height: 6px; background: #0288d1; border-radius: 50%; position: absolute; top: 3px; left: 3px; }
-
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-
         /* --- NAVEGACIÓN --- */
         .nav-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-bottom: 40px;
             font-family: var(--font-futuristic);
         }
@@ -103,29 +70,29 @@
         .nav-item {
             text-decoration: none;
             color: #0277bd;
-            font-size: 11px;
+            font-size: 10px;
             letter-spacing: 2px;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 25px;
+            background: var(--glass);
             backdrop-filter: blur(10px);
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.5);
             transition: 0.3s;
         }
 
         .nav-item:hover { background: rgba(255, 255, 255, 0.5); box-shadow: 0 0 15px white; }
 
-        /* --- PANELES GLASS --- */
+        /* --- PANELES --- */
         .main-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.25);
+            background: var(--glass);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 40px;
@@ -134,9 +101,9 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.05);
         }
 
-        h2 { font-family: var(--font-futuristic); font-weight: 700; font-size: 20px; color: #01579b; }
+        h2 { font-family: var(--font-futuristic); font-size: 18px; color: #01579b; margin-bottom: 20px; }
 
-        /* --- BOTONES --- */
+        /* --- BOTONES BURBUJA --- */
         .btn-bubble {
             font-family: var(--font-futuristic);
             background: linear-gradient(to bottom, #81d4fa 0%, #0288d1 100%);
@@ -152,12 +119,42 @@
 
         .btn-bubble:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(129, 212, 250, 0.8); }
 
+        /* --- MASCOTA VIRTUAL --- */
+        #pet-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            cursor: pointer;
+            animation: bounce 3s infinite ease-in-out;
+        }
+
+        .pet-body {
+            width: 80px; height: 80px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            border: 2px solid white;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1), inset 0 0 15px white;
+        }
+
+        .eye { width: 14px; height: 14px; background: white; border-radius: 50%; margin: 0 5px; position: relative; }
+        .pupil { width: 7px; height: 7px; background: #0288d1; border-radius: 50%; position: absolute; top: 3px; left: 3px; transition: 0.1s; }
+
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
         @media (max-width: 600px) { .main-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <img src="https://i.ibb.co/L6v3ZpX/butterfly-aero.png" class="butterfly" alt="Butterfly" onerror="this.src='https://png.pngtree.com/png-vector/20220901/ourmid/pngtree-blue-butterfly-abstract-crystal-glass-png-image_6134316.png'">
+    <div class="butterfly-container">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 70C50 70 20 80 10 50C0 20 40 10 50 40C60 10 100 20 90 50C80 80 50 70 50 70Z" fill="rgba(255,255,255,0.6)" stroke="white" stroke-width="1"/>
+            <path d="M50 40L50 80M50 40L40 20M50 40L60 20" stroke="white" stroke-width="1"/>
+        </svg>
+    </div>
 
     <div id="bubble-container"></div>
     <div id="youtube-player" style="position: absolute; top: -9999px;"></div>
@@ -171,26 +168,24 @@
     <div class="main-grid">
         <div class="glass-card">
             <h2>AERO_PHAHID</h2>
-            <div style="background: white; border-radius: 25px; padding: 5px; margin-bottom: 20px;">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpYm5ueXF4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKMGpxxcaeqp2m4/giphy.gif" style="width:100%; border-radius: 20px;">
-            </div>
-            <p>Pureza y transparencia. Sistema activo.</p>
+            <div style="font-size: 60px; margin: 20px 0;">💠</div>
+            <p>Pureza y transparencia garantizada. Interfaz orgánica de alta fidelidad.</p>
             <button class="btn-bubble">EXPLORE</button>
         </div>
 
         <div class="glass-card">
             <h2>CRYSTAL_CORE</h2>
-            <div style="font-size: 50px; margin: 20px 0;">🌊</div>
+            <div style="font-size: 60px; margin: 20px 0;">🌊</div>
             <p>Estado del sistema: <span style="font-weight: bold;">FLUIDO</span></p>
             <button class="btn-bubble" onclick="toggleAudio()" id="play-btn">PLAY_AUDIO</button>
         </div>
     </div>
 
     <div id="pet-container" onclick="petSpeak()">
-        <div id="pet-message" style="position:absolute; top:-40px; background:white; padding:5px 10px; border-radius:15px; font-size:10px; display:none; border:1px solid #0288d1; white-space:nowrap;">¡Hola! 🌊</div>
+        <div id="pet-message" style="position:absolute; top:-40px; background:white; padding:5px 10px; border-radius:15px; font-size:10px; display:none; border:1px solid #0288d1; color:#0288d1; font-weight:bold;">¡Hola! 🌊</div>
         <div class="pet-body">
-            <div class="eye"><div class="pupil"></div></div>
-            <div class="eye"><div class="pupil"></div></div>
+            <div class="eye"><div class="pupil" id="p1"></div></div>
+            <div class="eye"><div class="pupil" id="p2"></div></div>
         </div>
     </div>
 
@@ -198,23 +193,23 @@
     <script>
         // Burbujas
         const container = document.getElementById('bubble-container');
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 18; i++) {
             const b = document.createElement('div');
             b.className = 'bubble';
             const size = Math.random() * 60 + 20 + 'px';
             b.style.width = size; b.style.height = size;
             b.style.left = Math.random() * 100 + '%';
-            b.style.animationDelay = Math.random() * 15 + 's';
+            b.style.animationDelay = Math.random() * 10 + 's';
             container.appendChild(b);
         }
 
-        // Mascota
+        // Seguimiento de ojos
         document.addEventListener('mousemove', (e) => {
             const pupils = document.querySelectorAll('.pupil');
             pupils.forEach(pupil => {
                 const rect = pupil.getBoundingClientRect();
-                const x = (e.clientX - rect.left) / 25;
-                const y = (e.clientY - rect.top) / 25;
+                const x = (e.clientX - rect.left) / 30;
+                const y = (e.clientY - rect.top) / 30;
                 pupil.style.transform = `translate(${x}px, ${y}px)`;
             });
         });
@@ -225,7 +220,7 @@
             setTimeout(() => msg.style.display = 'none', 2000);
         }
 
-        // Música
+        // Audio
         let player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('youtube-player', {
